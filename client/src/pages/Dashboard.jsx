@@ -265,7 +265,7 @@ const Dashboard = () => {
 
               {/* Raina */}
               <a
-                href="hhttps://www.linkedin.com/in/raina-maryam-66a264347/"
+                href="https://www.linkedin.com/in/raina-maryam-66a264347/"
                 target="_blank"
                 rel="noreferrer"
                 className="hp-linkedin-btn"
