@@ -36,6 +36,12 @@ const AIInsight = ({ text }) => (
   </div>
 );
 
+const LinkedInIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+  </svg>
+);
+
 const healthTips = [
   '🚶 Walk 10,000 steps daily to maintain cardiovascular health.',
   '💧 Drink at least 8 glasses of water per day to stay hydrated.',
@@ -131,9 +137,12 @@ const Dashboard = () => {
         .hp-reminder-row:hover { transform: translateX(4px); }
         .hp-stat-card { transition: all .2s ease; }
         .hp-stat-card:hover { transform: translateY(-2px); }
+        .hp-linkedin-btn { transition: all .2s ease; }
+        .hp-linkedin-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.08); }
       `}</style>
 
-      <div style={{ minHeight: '100vh', background: '#F8F7F3', fontFamily: "'DM Sans', sans-serif", paddingBottom: 64 }}>
+      <div style={{ minHeight: '100vh', background: '#F8F7F3', fontFamily: "'DM Sans', sans-serif", paddingBottom: 64 }}
+        className="md:ml-64">
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 24px' }}>
 
           {/* ── Greeting ── */}
@@ -163,7 +172,7 @@ const Dashboard = () => {
           <motion.div variants={fadeUp} initial="hidden" animate="show" custom={5} style={{ marginBottom: 32 }}>
             <div style={{ fontSize: 11, fontWeight: 500, letterSpacing: '1.5px', textTransform: 'uppercase', color: T.teal600, marginBottom: 14 }}>Quick Actions</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
-              {quickActions.map((a, i) => (
+              {quickActions.map((a) => (
                 <div key={a.label} className="hp-action-card"
                   onClick={() => navigate(a.path)}
                   style={{ background: '#fff', border: `0.5px solid ${T.gray100}`, borderRadius: 12, padding: '22px 20px', display: 'flex', alignItems: 'center', gap: 14 }}>
@@ -210,7 +219,7 @@ const Dashboard = () => {
 
           {/* ── This Week's Adherence ── */}
           <motion.div variants={fadeUp} initial="hidden" animate="show" custom={7} style={{ marginBottom: 0 }}>
-            <div style={{ background: '#fff', border: `0.5px solid ${T.gray100}`, borderRadius: 12, padding: '20px 24px', marginBottom: 0 }}>
+            <div style={{ background: '#fff', border: `0.5px solid ${T.gray100}`, borderRadius: 12, padding: '20px 24px' }}>
               <div style={{ fontSize: 11, color: T.gray400, marginBottom: 14, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '.8px' }}>This week's adherence</div>
               <div style={{ display: 'flex', gap: 6, alignItems: 'flex-end', height: 60 }}>
                 {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, i) => {
@@ -228,6 +237,50 @@ const Dashboard = () => {
 
             {/* ── Health Tip ── */}
             <AIInsight text={todaysTip} />
+          </motion.div>
+
+          {/* ── Footer ── */}
+          <motion.div variants={fadeUp} initial="hidden" animate="show" custom={8}
+            style={{ marginTop: 48, paddingTop: 24, borderTop: `0.5px solid ${T.gray100}`, textAlign: 'center' }}>
+            <p style={{ fontSize: 12, color: T.gray400, marginBottom: 14, letterSpacing: '0.5px', textTransform: 'uppercase', fontWeight: 500 }}>
+              Built by
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+
+              {/* Khubaib */}
+              <a
+                href="https://www.linkedin.com/in/khubaibxkhan/"
+                target="_blank"
+                rel="noreferrer"
+                className="hp-linkedin-btn"
+                style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none',
+                  background: '#fff', border: `0.5px solid ${T.gray100}`,
+                  borderRadius: 24, padding: '9px 18px',
+                  fontSize: 13, fontWeight: 500, color: '#0A66C2' }}>
+                <LinkedInIcon />
+                Khubaib
+              </a>
+
+              <span style={{ fontSize: 16, color: T.gray100 }}>×</span>
+
+              {/* Raina */}
+              <a
+                href="hhttps://www.linkedin.com/in/raina-maryam-66a264347/"
+                target="_blank"
+                rel="noreferrer"
+                className="hp-linkedin-btn"
+                style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none',
+                  background: '#fff', border: `0.5px solid ${T.gray100}`,
+                  borderRadius: 24, padding: '9px 18px',
+                  fontSize: 13, fontWeight: 500, color: '#0A66C2' }}>
+                <LinkedInIcon />
+                Raina
+              </a>
+            </div>
+
+            <p style={{ fontSize: 11, color: T.gray400, marginTop: 16, marginBottom: 0 }}>
+              HealthGuard AI · {new Date().getFullYear()}
+            </p>
           </motion.div>
 
         </div>
